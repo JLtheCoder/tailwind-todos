@@ -19,10 +19,16 @@ function getTodoStatus({ dueDate, completed }) {
   return todoStatus.PENDING;
 }
 
-function Todo({ todoId, title, description, dueDate, completed }) {
-  const onRemove = {};
-  const onComplete = {};
-
+function Todo({
+  todoId,
+  title,
+  description,
+  dueDate,
+  completed,
+  onUpdate,
+  onComplete,
+  onRemove,
+}) {
   return (
     <Card>
       <div className="flex justify-between">
@@ -33,7 +39,7 @@ function Todo({ todoId, title, description, dueDate, completed }) {
           title={title}
           description={description}
           dueDate={dueDate}
-          onSave={() => {}}
+          onSave={onUpdate}
         />
       </div>
       <Badge>{getTodoStatus({ dueDate, completed })}</Badge>
@@ -42,12 +48,10 @@ function Todo({ todoId, title, description, dueDate, completed }) {
         Due Date: {dueDate.toLocaleString()}
       </p>
       <div className="flex justify-end pt-8">
-        <Button theme="warning" onRemove={onRemove}>
+        <Button theme="warning" onClick={onRemove}>
           Remove
         </Button>
-        {!completed && (
-          <Button onComplete={onComplete}>Mark as completed</Button>
-        )}
+        {!completed && <Button onClick={onComplete}>Mark as completed</Button>}
       </div>
     </Card>
   );
@@ -59,7 +63,7 @@ Todo.propTypes = {
   description: PropTypes.string.isRequired,
   dueDate: PropTypes.instanceOf(Date).isRequired,
   completed: PropTypes.bool.isRequired,
-  onSave: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
   onRemove: PropTypes.func.isRequired,
   onComplete: PropTypes.func,
 };

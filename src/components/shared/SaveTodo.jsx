@@ -32,8 +32,6 @@ function SaveTodo({ linkText, todoId, title, description, dueDate, onSave }) {
     return !!(todoState.title && todoState.description && todoState.dueDate);
   };
 
-  console.log("todoState", todoState);
-
   return (
     <>
       <Button
@@ -58,7 +56,7 @@ function SaveTodo({ linkText, todoId, title, description, dueDate, onSave }) {
             setErrors(true);
             return;
           }
-          onSave();
+          onSave(todoState);
           setShowModal(false);
         }}
         isShown={showModal}
