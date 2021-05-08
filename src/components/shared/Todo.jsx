@@ -3,7 +3,7 @@ import Card from "../foundation/Card";
 import Header from "../foundation/Header";
 import Badge from "../foundation/Badge";
 import Button from "../foundation/Button";
-import EditTodo from "./EditTodo";
+import SaveTodo from "./SaveTodo";
 
 const todoStatus = {
   PENDING: "Pending",
@@ -27,11 +27,13 @@ function Todo({ todoId, title, description, dueDate, completed }) {
     <Card>
       <div className="flex justify-between">
         <Header>{title}</Header>
-        <EditTodo
+        <SaveTodo
+          linkText="Edit"
           todoId={todoId}
           title={title}
           description={description}
           dueDate={dueDate}
+          onSave={() => {}}
         />
       </div>
       <Badge>{getTodoStatus({ dueDate, completed })}</Badge>

@@ -1,11 +1,11 @@
 import Grid from "./components/foundation/Grid";
 import Todo from "./components/shared/Todo";
-import Modal from "./components/shared/Modal";
+import SaveTodo from "./components/shared/SaveTodo";
 
 function App() {
   return (
     <div className="p-10">
-      <Modal linkText="Add new item"></Modal>
+      <SaveTodo linkText="Add new item" onSave={() => {}}></SaveTodo>
 
       <Grid>
         <Todo
