@@ -7,7 +7,14 @@ import DatePicker from "../foundation/DatePicker";
 import Button from "../foundation/Button";
 import Modal from "./Modal";
 
-function SaveTodo({ linkText, todoId, title, description, dueDate, onSave }) {
+function SaveTodo({
+  linkText,
+  todoId,
+  title = "",
+  description = "",
+  dueDate,
+  onSave,
+}) {
   const formattedDueDate = format(
     dueDate ?? new Date(),
     "yyyy-MM-dd'T'HH:mm:ss"

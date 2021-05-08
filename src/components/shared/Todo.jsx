@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { isPast } from "date-fns";
 import Card from "../foundation/Card";
 import Header from "../foundation/Header";
 import Badge from "../foundation/Badge";
@@ -16,7 +17,7 @@ function getTodoStatus({ dueDate, completed }) {
     return todoStatus.COMPLETED;
   }
 
-  return todoStatus.PENDING;
+  return isPast(dueDate) ? todoStatus.OVERDUE : todoStatus.PENDING;
 }
 
 function Todo({

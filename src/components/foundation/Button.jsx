@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const ButtonThemes = ["success", "warning"];
+const buttonThemes = ["success", "warning", "link"];
 
 function Button({ children, onClick, theme = "success" }) {
   const baseTheme = "font-semibold rounded-lg focus:outline-none";
@@ -25,6 +25,7 @@ function Button({ children, onClick, theme = "success" }) {
 }
 
 Button.propTypes = {
+  theme: PropTypes.oneOf(buttonThemes),
   children: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };

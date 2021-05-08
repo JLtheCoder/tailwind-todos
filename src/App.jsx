@@ -5,8 +5,22 @@ import SaveTodo from "./components/shared/SaveTodo";
 
 function App() {
   const [todos, setTudos] = useState({
+    0: {
+      id: 0,
+      title: "Take out the trash",
+      description: "Kitchen smells funny",
+      dueDate: new Date("2021-05-01T12:00:00"),
+      completed: true,
+    },
     1: {
       id: 1,
+      title: "Book my appointment for vaccine",
+      description: "Book it here https://covid-19.ontario.ca/book-vaccine",
+      dueDate: new Date("2021-05-01T12:00:00"),
+      completed: false,
+    },
+    2: {
+      id: 2,
       title: "Build app with Tailwind CSS",
       description:
         "I need to build a todo app with React and Tailwind CSS to learn how Tailwind works",
