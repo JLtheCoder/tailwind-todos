@@ -5,6 +5,7 @@ import Input from "../foundation/Input";
 import TextArea from "../foundation/TextArea";
 import DatePicker from "../foundation/DatePicker";
 import Button from "../foundation/Button";
+import CheckBox from "../foundation/CheckBox";
 import Modal from "./Modal";
 
 function SaveTodo({
@@ -12,6 +13,7 @@ function SaveTodo({
   todoId,
   title = "",
   description = "",
+  completed = false,
   dueDate,
   onSave,
 }) {
@@ -23,6 +25,7 @@ function SaveTodo({
     todoId,
     title,
     description,
+    completed,
     dueDate: formattedDueDate,
   });
   const [hasErrors, setErrors] = useState(false);
@@ -35,6 +38,13 @@ function SaveTodo({
       [field]: value,
     }));
   };
+
+  const onCheckbox = ({ target: { checked } }) =>
+    setTodoState((prevState) => ({
+      ...prevState,
+      completed: checked,
+    }));
+
   const validate = () => {
     return !!(todoState.title && todoState.description && todoState.dueDate);
   };
@@ -49,6 +59,7 @@ function SaveTodo({
             todoId,
             title,
             description,
+            completed,
             dueDate: formattedDueDate,
           });
           setShowModal(true);
@@ -90,6 +101,10 @@ function SaveTodo({
             onChange={onFieldChange("dueDate")}
           />
         </label>
+        <label className="inline-flex items-center">
+          <span className="text-gray-700 pr-2 my-1">Completed: </span>
+          <CheckBox checked={todoState.completed} onChange={onCheckbox} />
+        </label>
         {hasErrors && (
           <span className="text-red-700">Please complete all fields</span>
         )}
@@ -103,6 +118,7 @@ SaveTodo.propTypes = {
   todoId: PropTypes.number,
   title: PropTypes.string,
   description: PropTypes.string,
+  completed: PropTypes.bool,
   dueDate: PropTypes.instanceOf(Date),
   onSave: PropTypes.func.isRequired,
 };

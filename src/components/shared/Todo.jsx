@@ -39,6 +39,7 @@ function Todo({
           todoId={todoId}
           title={title}
           description={description}
+          completed={completed}
           dueDate={dueDate}
           onSave={onUpdate}
         />

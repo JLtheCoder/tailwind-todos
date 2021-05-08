@@ -57,13 +57,14 @@ function App() {
             description={todo.description}
             dueDate={todo.dueDate}
             completed={todo.completed}
-            onUpdate={({ title, description, dueDate }) => {
+            onUpdate={({ title, description, dueDate, completed }) => {
               setTudos((previousTodos) => ({
                 ...previousTodos,
                 [todo.id]: {
                   ...previousTodos[todo.id],
                   title,
                   description,
+                  completed,
                   dueDate: new Date(dueDate),
                 },
               }));
