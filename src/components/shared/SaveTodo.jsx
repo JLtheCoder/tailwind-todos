@@ -106,7 +106,7 @@ function SaveTodo({
           <CheckBox checked={todoState.completed} onChange={onCheckbox} />
         </label>
         {hasErrors && (
-          <span className="text-red-700">Please complete all fields</span>
+          <div className="text-red-700">Please complete all fields</div>
         )}
       </Modal>
     </>
